@@ -4,3 +4,4 @@
 
 [Practica2](https://nbviewer.jupyter.org/github/Saphira3000/Ciencia_de_Datos/blob/master/p2.ipynb)
 
+[Practica3](https://nbviewer.jupyter.org/github/Saphira3000/Ciencia_de_Datos/blob/master/p3.ipynb)
