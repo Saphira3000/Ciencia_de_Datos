@@ -14,3 +14,5 @@
 
 [Práctica 7](https://nbviewer.jupyter.org/github/Saphira3000/Ciencia_de_Datos/blob/master/p7.ipynb)
 
+[Práctica 8](https://nbviewer.jupyter.org/github/Saphira3000/Ciencia_de_Datos/blob/master/p8.ipynb)
+
