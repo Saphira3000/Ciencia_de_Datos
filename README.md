@@ -18,3 +18,5 @@
 
 [Práctica 9](https://nbviewer.jupyter.org/github/Saphira3000/Ciencia_de_Datos/blob/master/p9.ipynb)
 
+[Práctica 10](https://nbviewer.jupyter.org/github/Saphira3000/Ciencia_de_Datos/blob/master/p10.ipynb)
+
