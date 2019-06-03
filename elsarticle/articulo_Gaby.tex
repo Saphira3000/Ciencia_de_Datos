@@ -146,7 +146,7 @@ Se presenta un an\'alisis de incidentes de violencia intrafamiliar y comunitaria
 
 Este trabajo busca aplicar herramientas de ciencia de datos que permitan analizar el efecto de distintos factores presentes en incidentes de violencia intrafamiliar y comunitaria en el estado de Nuevo Le\'on, con el objetivo de identificar vulnerables y posibles causas al problema que permitan planear estrategias de prevenci\'on.
 
-La estructura del art\'iculo es la siguiente: * 
+La estructura del art\'iculo es la siguiente: en la secci\'on \ref{metodologia} se describen las caracter\'isticas de los datos utilizados en el estudio as\'i como las herramientas que se usan en los distintos tipos de an\'alisis, los resultados de dichos an\'alisis se presentan y discuten en la secci\'on \ref{resultados}. Finalmente, en la secci\'on \ref{conclusiones} se presentan las conclusiones.
 
 %\section{Antecedentes} \label{antecedentes}
 
@@ -236,13 +236,35 @@ layout = go.Layout(
 )
 \end{lstlisting}
 
-\subsubsection*{Modelos lineales}
+\subsubsection*{Pruebas estad\'isticas}
 
-Modelos lineales con scipy.stats
+Para realizar pruebas estad\'isticas como determinar la normalidad de los datos, as\'i como probar modelos lineales se utiliza la librer\'ia \textit{scipy.stats}. 
 
-Modelos lineales son para representar una variable de interés como una función de uno o más factores conocidos de tal forma que se maximice la proporción de variación explicada por el modelo.
+Los modelos lineales sirven para representar una variable de inter\'es, por ejemplo la cantidad de incidentes reportados, como una función de uno o m\'as factores conocidos. Algunos de los modelos lineales que se analizan son: la relaci\'on entre la cantidad de incidentes y la hora, mes y municipio.
 
+Tambi\'en se analizan modelos de regresi\'on m\'ultiple, los cuales tienen m\'as de un factor modelando conjuntamente la variable de inter\'es. Esto se obtiene utilizando la librer\'ia \textit{statsmodels}, que tambi\'en se utiliza para realizar an\'alisis de varianza que ayudan a cuantificar s\'i o no una variable o factor tiene un efecto estad\'isticamente significativo en la variable de inter\'es.
 
+Uno de los modelos que se analiza el efecto de los factores \textit{edad de la v\'ictima, hora y mes} en la cantidad de incidentes. Para este y la siguiente experimentaci\'on solo se utilizan los datos correspondientes con una v\'ictima y un agresor teniendo en total 1479 reportes.
+\begin{lstlisting}
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+
+datos = pd.read_csv("vf_1-1.csv") 
+datos['cuantos'] = 1
+c = datos.groupby(['edad_v', 'mes', 'hora'], as_index=False).agg({"cuantos": "sum"})
+m = ols('cuantos ~ edad_v + hora + mes', data = c).fit() 
+a = sm.stats.anova_lm(m, typ = 2)
+
+print(a)
+n = len(a)
+alpha = 0.05
+for i in range(n):
+    print("{:s} {:s}es significativo".format(a.index[i], "" if a['PR(>F)'][i] < alpha else "NO ")) 
+\end{lstlisting}
+
+\subsubsection*{Pron\'osticos}
+
+Estudiar pron\'osticos de los datos es importante ya que permite predecir un valor que tomar\'a una variable a partir de valores que haya tomado en la anterioridad, si se analiza la cantidad de incidentes de acuerdo a distintos factores podr\'ia ayudar a planear estrategias de soluci\'on. Los pron\'osticos tambi\'en se realizan con la librer\'ia \textit{statsmodels}.
 
 \section{Resultados} \label{resultados}
 
@@ -251,6 +273,8 @@ En esta secci\'on se presentan los resultados del an\'alisis y experimentos que 
 Primero se muestran gr\'aficos que permiten una visualizaci\'on de la informaci\'on con la que se trabaja. 
 
 Las Figuras \ref{incidentes_horas} y \ref{indicentes_mes} muestran un histograma de la cantidad de incidentes reportados de acuerdo a las horas y de acuerdo a los meses respectivamente. De ellas podemos observar que el rango de horarios de las 20:00 - 01:00 horas es el que reporta una mayor cantidad de incidentes mientras que en el caso de los meses, julio fue el mes m\'as violento de ese a\~no.
+
+Adem\'as, la figura \ref{indicentes_mes} parece indicar que la cantidad de incidentes de acuerdo a los meses parece seguir una distribuci\'on normal. Al realizar las pruebas estad\'isticas de normalidad se obtiene que el \textit{p-valor} es menor que el estad\'istico de prueba por lo que \textit{se rechaza la hip\'otesis de que los datos sigan una distribuci\'on normal}.   
 
 \begin{figure}
 \centering
@@ -276,9 +300,63 @@ Tambi\'en es notorio que la mayor\'ia de los incidentes ocurre con agresores y v
 \label{edades}
 \end{figure} 
 
+Una de las predicciones que se realiza con el m\'etodo de Holt, utiliza los reportes de los meses de enero a noviembre y predice los reportes que se tendrán en el mes de diciembre, los resultados obtenidos se muestran en la Figura \ref{predic_mes}, donde los datos reales se grafican en rojo y la predicci\'on en verde. No se logr\'o identificar porqu\'e la predicci\'on no se ajusta muy bien a lo real, podr\'ia tratarse de un error al momento de procesar la informaci\'on, sin embargo no se determin\'o el error.
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{pred_mes.eps}
+\caption{Predicción del n\'umero de indicentes en el mes de diciembre usando el m\'etodo de Holt.}
+\label{predic_mes}
+\end{figure}
 
+Analizando \'unicamente los datos correspondientes a las v\'ictimas con los factores edad, estado civil, escolaridad, hora y mes, se realiza un an\'alisis de varianza, aunque los resultados no parecen ayudar a concluir muchas cosas ya que los residuales son muy altos.
+\begin{lstlisting}
+m = ols('cuantos ~ edad * edo_civil + edad * hora + edad * escolaridad', data = c).fit() 
+a = sm.stats.anova_lm(m, typ = 2)
+print(a)
+n = len(a)
+alpha = 0.05
+for i in range(n):
+    print("{:s} {:s}es significativo".format(a.index[i], "" if a['PR(>F)'][i] < alpha else "NO "))
+    
+                         sum_sq      df           F        PR(>F)
+edad               28047.938691     1.0  218.876307  2.726351e-47
+edo_civil          30247.078317     1.0  236.037623  1.103524e-50
+edad:edo_civil      6916.724660     1.0   53.975701  2.843324e-13
+hora                3020.502432     1.0   23.570945  1.288347e-06
+edad:hora            645.207120     1.0    5.034971  2.493937e-02
+escolaridad         6346.876698     1.0   49.528807  2.599533e-12
+edad:escolaridad     500.301989     1.0    3.904182  4.829056e-02
+Residual          282560.071260  2205.0         NaN           NaN
+edad es significativo
+edo_civil es significativo
+edad:edo_civil es significativo
+hora es significativo
+edad:hora es significativo
+escolaridad es significativo
+edad:escolaridad es significativo
+Residual NO es significativo    
+\end{lstlisting}
+
+Con esta misma informaci\'on se realiza un an\'alisis de componentes principales intentanto separar los datos de acuerdo a la escolaridad de la v\'ictima. Para el caso del estado civil, se consideran solo \textit{casado o soltero}. El resultado del an\'alisis se observa en la Figura \ref{pca}.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.4]{pca.eps}
+\caption{An\'alisis de componentes principales.}
+\label{pca}
+\end{figure}
+
+Un procesamiento que debe realizarse es analizar aquellos puntos que visualmente est\'an separados del resto y estudiar cu\'al es la diferencia entre ellos, ya que este resultado no logra aportar mucho.
 
 \section{Conclusiones} \label{conclusiones}
+
+Se presenta un an\'alisis de incidentes de violencia intrafamiliar y comunitaria reportados en municipios del estado
+de Nuevo Le\'on. 
+
+Los resultados que se pudieron obtener de dicho an\'alisis indican que hay un grupo espec\'ifico de edades en v\'ictimas y agresores que parecen ser el foco de las agresiones. Como trabajo a futuro se podr\'ia realizar un an\'alisis espec\'ifico para este grupo casos, as\'i como tambi\'en se pueden analizar aquellos casos en los que las v\'ictimas son menores de edad ya que es inaceptable que existan casos de violencia con v\'ictimas menores de 5 a\~nos al igual que los casos con v\'ictimas mayores de 90.
+
+El manejo de la informaci\'on no result\'o ser el adecuado ya que los resultados no permiten concluir de manera eficaz los factores que m\'as influencia tienen en el n\'umero de incidentes, por lo que no se determinan posibles causas del problema.
+
 
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
@@ -301,14 +379,14 @@ Tambi\'en es notorio que la mayor\'ia de los incidentes ocurre con agresores y v
 %% else use the following coding to input the bibitems directly in the
 %% TeX file.
 
-\begin{thebibliography}{00}
+%\begin{thebibliography}{00}
 
 %% \bibitem[Author(year)]{label}
 %% Text of bibliographic item
 
 %\bibitem[ ()]{}
 
-\end{thebibliography}
+%\end{thebibliography}
 
 \section*{Agradecimientos}
 

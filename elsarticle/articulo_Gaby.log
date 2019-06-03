@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.12)  3 JUN 2019 05:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.12)  3 JUN 2019 11:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -687,14 +687,6 @@ Overfull \hbox (1.90001pt too wide) has occurred while \output is active
 
 ]
 Missing character: There is no Ã in font txr!
-Missing character: There is no © in font txr!
-Missing character: There is no Ã in font txr!
-Missing character: There is no ³ in font txr!
-Missing character: There is no Ã in font txr!
-Missing character: There is no ¡ in font txr!
-Missing character: There is no Ã in font txr!
-Missing character: There is no ³ in font txr!
-Missing character: There is no Ã in font txr!
 Missing character: There is no ³ in font txr!
 Package epstopdf Info: Source file: <horas.eps>
 (epstopdf)                    date: 2019-06-03 04:17:27
@@ -704,7 +696,7 @@ Package epstopdf Info: Source file: <horas.eps>
 (epstopdf)                    size: 10819 bytes
 (epstopdf)             Command: <repstopdf --outfile=horas-eps-converted-to.pdf
  horas.eps>
-(epstopdf)             \includegraphics on input line 257.
+(epstopdf)             \includegraphics on input line 281.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -714,10 +706,10 @@ und PDF version <1.7>, but at most version <1.5> allowed
 File: horas-eps-converted-to.pdf Graphic file (type pdf)
 
 <use horas-eps-converted-to.pdf>
-Package pdftex.def Info: horas-eps-converted-to.pdf used on input line 257.
+Package pdftex.def Info: horas-eps-converted-to.pdf used on input line 281.
 (pdftex.def)             Requested size: 260.17401pt x 173.44933pt.
 
-Overfull \hbox (8.17401pt too wide) in paragraph at lines 257--258
+Overfull \hbox (8.17401pt too wide) in paragraph at lines 281--282
  [][] 
  []
 
@@ -729,7 +721,7 @@ Package epstopdf Info: Source file: <mes.eps>
 (epstopdf)                    size: 10544 bytes
 (epstopdf)             Command: <repstopdf --outfile=mes-eps-converted-to.pdf m
 es.eps>
-(epstopdf)             \includegraphics on input line 264.
+(epstopdf)             \includegraphics on input line 288.
 Package epstopdf Info: Output file is already uptodate.
 
 
@@ -739,13 +731,14 @@ d PDF version <1.7>, but at most version <1.5> allowed
 File: mes-eps-converted-to.pdf Graphic file (type pdf)
 
 <use mes-eps-converted-to.pdf>
-Package pdftex.def Info: mes-eps-converted-to.pdf used on input line 264.
+Package pdftex.def Info: mes-eps-converted-to.pdf used on input line 288.
 (pdftex.def)             Requested size: 260.17401pt x 173.44933pt.
 
-Overfull \hbox (8.17401pt too wide) in paragraph at lines 264--265
+Overfull \hbox (8.17401pt too wide) in paragraph at lines 288--289
  [][] 
  []
 
+[2]
 Package epstopdf Info: Source file: <edades.eps>
 (epstopdf)                    date: 2019-06-03 05:00:42
 (epstopdf)                    size: 2132757 bytes
@@ -754,38 +747,87 @@ Package epstopdf Info: Source file: <edades.eps>
 (epstopdf)                    size: 16426 bytes
 (epstopdf)             Command: <repstopdf --outfile=edades-eps-converted-to.pd
 f edades.eps>
-(epstopdf)             \includegraphics on input line 274.
+(epstopdf)             \includegraphics on input line 298.
 Package epstopdf Info: Output file is already uptodate.
 
 
 pdfTeX warning: pdflatex (file ./edades-eps-converted-to.pdf): PDF inclusion: f
 ound PDF version <1.7>, but at most version <1.5> allowed
-<edades-eps-converted-to.pdf, id=13, 702.625pt x 501.875pt>
+<edades-eps-converted-to.pdf, id=16, 702.625pt x 501.875pt>
 File: edades-eps-converted-to.pdf Graphic file (type pdf)
 
 <use edades-eps-converted-to.pdf>
-Package pdftex.def Info: edades-eps-converted-to.pdf used on input line 274.
+Package pdftex.def Info: edades-eps-converted-to.pdf used on input line 298.
 (pdftex.def)             Requested size: 281.04501pt x 200.74643pt.
 
-Overfull \hbox (29.04501pt too wide) in paragraph at lines 274--275
+Overfull \hbox (29.04501pt too wide) in paragraph at lines 298--299
  [][] 
  []
 
-[2 <./horas-eps-converted-to.pdf> <./mes-eps-converted-to.pdf>]
+Missing character: There is no Ã in font txr!
+Missing character: There is no ¡ in font txr!
+Package epstopdf Info: Source file: <pred_mes.eps>
+(epstopdf)                    date: 2019-06-03 10:42:04
+(epstopdf)                    size: 20449 bytes
+(epstopdf)             Output file: <pred_mes-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-06-03 10:45:44
+(epstopdf)                    size: 13396 bytes
+(epstopdf)             Command: <repstopdf --outfile=pred_mes-eps-converted-to.
+pdf pred_mes.eps>
+(epstopdf)             \includegraphics on input line 306.
+Package epstopdf Info: Output file is already uptodate.
 
-Package natbib Warning: Empty `thebibliography' environment on input line 311.
 
-[3
+pdfTeX warning: pdflatex (file ./pred_mes-eps-converted-to.pdf): PDF inclusion:
+ found PDF version <1.7>, but at most version <1.5> allowed
+<pred_mes-eps-converted-to.pdf, id=17, 433.62pt x 289.08pt>
+File: pred_mes-eps-converted-to.pdf Graphic file (type pdf)
 
- <./edades-eps-converted-to.pdf>] (./articulo_Gaby.aux
+<use pred_mes-eps-converted-to.pdf>
+Package pdftex.def Info: pred_mes-eps-converted-to.pdf used on input line 306.
+(pdftex.def)             Requested size: 216.80946pt x 144.53964pt.
+Missing character: There is no Ã in font txr!
+Missing character: There is no ³ in font txr!
+Missing character: There is no Ã in font txr!
+Missing character: There is no ³ in font txr!
+
+Overfull \hbox (5.70009pt too wide) in paragraph at lines 311--312
+[]\OT1/txr/m/n/10 Analizando []uni-ca-men-te los da-tos co-rres-pon-dien-tes a 
+las v[]^^Pcti-
+ []
+
+[3 <./horas-eps-converted-to.pdf> <./mes-eps-converted-to.pdf> <./edades-eps-co
+nverted-to.pdf> <./pred_mes-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <pca.eps>
+(epstopdf)                    date: 2019-06-03 11:31:27
+(epstopdf)                    size: 59700 bytes
+(epstopdf)             Output file: <pca-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-06-03 11:32:21
+(epstopdf)                    size: 257660 bytes
+(epstopdf)             Command: <repstopdf --outfile=pca-eps-converted-to.pdf p
+ca.eps>
+(epstopdf)             \includegraphics on input line 344.
+Package epstopdf Info: Output file is already uptodate.
+
+
+pdfTeX warning: pdflatex (file ./pca-eps-converted-to.pdf): PDF inclusion: foun
+d PDF version <1.7>, but at most version <1.5> allowed
+<pca-eps-converted-to.pdf, id=101, 578.16pt x 578.16pt>
+File: pca-eps-converted-to.pdf Graphic file (type pdf)
+
+<use pca-eps-converted-to.pdf>
+Package pdftex.def Info: pca-eps-converted-to.pdf used on input line 344.
+(pdftex.def)             Requested size: 231.2599pt x 231.2599pt.
+ [4 <./pca-eps-converted-to.pdf>]
+(./articulo_Gaby.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
 ) ) 
 Here is how much of TeX's memory you used:
- 6682 strings out of 493029
- 94748 string characters out of 6136233
- 247214 words of memory out of 5000000
- 10107 multiletter control sequences out of 15000+600000
+ 6728 strings out of 493029
+ 95367 string characters out of 6136233
+ 256214 words of memory out of 5000000
+ 10151 multiletter control sequences out of 15000+600000
  25698 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,8n,40p,667b,1069s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -795,10 +837,10 @@ f-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/public/txfonts/rtxsc.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
 times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on articulo_Gaby.pdf (3 pages, 99366 bytes).
+Output written on articulo_Gaby.pdf (4 pages, 373635 bytes).
 PDF statistics:
- 95 PDF objects out of 1000 (max. 8388607)
- 37 compressed objects within 1 object stream
+ 154 PDF objects out of 1000 (max. 8388607)
+ 47 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
